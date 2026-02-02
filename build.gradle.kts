@@ -33,6 +33,20 @@ allprojects {
             languageVersion.set(JavaLanguageVersion.of(8))
         }
     }
+
+    publishing {
+        repositories {
+            maven {
+                url = uri("https://pkg.frst.cloud/releases")
+                name = "frstCloudReleases"
+
+                credentials {
+                    username = providers.environmentVariable("USERNAME").getOrElse("default")
+                    password = providers.environmentVariable("PASSWORD").getOrElse("default")
+                }
+            }
+        }
+    }
 }
 
 java {
