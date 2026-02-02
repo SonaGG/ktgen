@@ -42,9 +42,23 @@ java {
 gradlePlugin {
     plugins {
         create("ktgen") {
-            id = "net.echonolix.ktgen"
+            id = "gg.sona.ktgen"
             displayName = "ktgen"
             implementationClass = "net.echonolix.ktgen.KtgenPlugin"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://pkg.frst.cloud/releases")
+            name = "frstCloudReleases"
+
+            credentials {
+                username = providers.environmentVariable("USERNAME").getOrElse("default")
+                password = providers.environmentVariable("PASSWORD").getOrElse("default")
+            }
         }
     }
 }
