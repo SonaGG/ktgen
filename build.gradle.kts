@@ -63,20 +63,6 @@ gradlePlugin {
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            url = uri("https://pkg.frst.cloud/releases")
-            name = "frstCloudReleases"
-
-            credentials {
-                username = providers.environmentVariable("USERNAME").getOrElse("default")
-                password = providers.environmentVariable("PASSWORD").getOrElse("default")
-            }
-        }
-    }
-}
-
 tasks {
     processResources {
         expand("version" to project.version)
